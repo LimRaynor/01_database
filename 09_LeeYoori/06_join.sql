@@ -130,3 +130,4 @@ join tbl_category b
 -- on a.category_code = b.category_code
 using(category_code);
 
+select * from EMPLOYEE order by EMP_NAME ;

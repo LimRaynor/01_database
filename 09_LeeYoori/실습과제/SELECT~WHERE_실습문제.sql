@@ -199,10 +199,8 @@
 -- 30번. tbl_menu 테이블에서 주문 불가능하거나(orderable_status = 'N'), 가격이 10,000원 미만인 메뉴 중 메뉴명이 '빵', '떡', '찜' 중 하나로 끝나는 메뉴를 조회하세요. (여러 조건 조합)
     select *
     from tbl_menu
-    where orderable_status = 'N'
-      and menu_price < 10000
-      and (
-               menu_name like '%빵'
-            or menu_name like '%떡'
-            or menu_name like '%찜'
-        );
+    where (orderable_status = 'N'
+      or menu_price < 10000)
+     and (menu_name like '%빵%'
+     or menu_name like '%떡%'
+     or menu_name like '%찜%');
