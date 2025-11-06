@@ -313,6 +313,61 @@ SELECT E.DEPT_CODE,AVG(E.SALARY)
 GROUP BY E.DEPT_CODE;
 
 
+-- 부서별 평균 급여를 구하고, 평균 급여가 300만 이상인 부서만 출력하세요.
+    SELECT
+        SALARY AS "급여",
+        DEPT_TITLE AS "부서"
+    FROM
+        employee E
+    JOIN
+            department D ON (E.DEPT_CODE = D.DEPT_ID)
+    GROUP BY
+        D.DEPT_TITLE
+    ORDER BY
+        AVG(SALARY)DESC;
+
+-- BONUS가 0보다 큰 직원의 이름, 급여, 보너스, 부서명을 조회하세요.
+    SELECT
+        EMP_NAME AS "이름",
+        SALARY AS "급여",
+        BONUS AS "보너스",
+        DEPT_TITLE AS "부서"
+    FROM
+        employee E
+    JOIN
+            department D ON (E.DEPT_CODE = D.DEPT_ID)
+    WHERE
+        BONUS > 0 ;
+
+-- 각 부서(DEPT_CODE)별 직원 수를 구하되, 부서명이 NULL이 아닌 경우만 출력하세요.
+   select
+    d.DEPT_TITLE,
+    COUNT(e.EMP_ID)
+FROM employee e
+    LEFT JOIN department d ON (e.DEPT_CODE = d.DEPT_ID)
+WHERE
+    d.DEPT_TITLE IS NOT NULL -- 레프트조인으로 널을만듬
+GROUP BY
+    d.DEPT_TITLE;
+
+   /* SELECT
+        D.DEPT_TITLE,
+        COUNT(EMP_NAME)
+    FROM
+        employee E
+    JOIN
+            department D ON (E.DEPT_CODE = D.DEPT_ID)
+    ORDER BY
+        D.DEPT_TITLE IS NOT NULL ;
+
+    */
+
+
+
+
+-- 부서별 평균 급여를 구하고, 평균 급여가 300만 이상인 부서만 출력하세요.
+
+
 
 
 
